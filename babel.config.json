@@ -6,8 +6,7 @@
             {
                 "modules": "umd",
                 "spec": true,
-                "bugfixes": true,
-                "exclude": ["@babel/plugin-transform-typeof-symbol"]
+                "bugfixes": true
             }
         ],
         [

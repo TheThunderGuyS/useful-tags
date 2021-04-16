@@ -1,25 +1,33 @@
-//Convert arrays/template strings to actual strings, throw an error on an invalid type
+//Convert all input types to a string
 function manageTypes(templateString, ...literals) {
-    if (typeof templateString === "string") return templateString;
-    else if (Array.isArray(templateString)) {
-        let string = "";
-        templateString.forEach((a, i) => {
-            string += a + (literals[i] || "");
-        });
-        return string;
-    } else {
-        throw new TypeError(
-            `Parameter "templateString" must be either a string or an array. Got type "${typeof templateString}" instead.`
+    if (templateString == null) return ""; //Prevent error on nullish input
+
+    //Return string from TemplateStringsArray
+    if (Array.isArray(templateString)) {
+        let convertedString = "";
+        //Loop over array, adding each value to a string
+        templateString.forEach(
+            (currentValue, index) =>
+                (convertedString += currentValue + (literals[index] || ""))
         );
+        return convertedString;
     }
+
+    return templateString.toString(); //If given anything else, return as a string
 }
 
 export function stripIndent(templateString, ...literals) {
     const string = manageTypes(templateString, ...literals);
 
-    const indents = string
-        .match(/^[ \t]*?(?=\S)/gm) //Find whitespace characters at the beginning of lines
-        .reduce((a, c) => Math.min(a, c.length), Infinity); //Get the number of whitespace characters
+    //Find whitespace characters at the beginning of lines, fall back to empty array if falsey
+    const indentArray = string.match(/^[ \t]*?(?=\S)/gm) || [];
+
+    //Get the number of whitespace characters
+    const indents = indentArray.reduce(
+        (accumulator, currentValue) =>
+            Math.min(accumulator, currentValue.length),
+        Infinity
+    );
 
     return string
         .replace(new RegExp(`^[ \t]{${indents}}`, "gm"), "") //Trim whitespace

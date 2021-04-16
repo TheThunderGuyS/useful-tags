@@ -1,26 +1,26 @@
 {
-	"plugins": ["prettier"],
+    "plugins": ["prettier"],
     "extends": ["eslint:recommended", "plugin:prettier/recommended"],
     "parser": "babel-eslint",
-	"env": {
+    "env": {
         "node": true,
         "browser": true,
         "es6": true
-	},
-	"parserOptions": {
+    },
+    "parserOptions": {
         "ecmaVersion": 2015
-	},
-	"rules": {
-		"semi": ["error", "always"],
-		"curly": ["error", "multi-line"],
-		"quotes": ["error", "double", {"avoidEscape": true, "allowTemplateLiterals": false}],
-		"eqeqeq": ["error", "smart"],
-		"no-multi-spaces": "error",
-		"no-useless-return": "error",
-		"no-var": "error",
-		"indent": "error",
-		"no-multiple-empty-lines": ["error", {"max": 2, "maxEOF": 1, "maxBOF": 0}],
-		"no-trailing-spaces": "error",
-		"prefer-const": "error"
-	}
+    },
+    "rules": {
+        "semi": ["error", "always"],
+        "curly": ["error", "multi-line"],
+        "quotes": ["error", "double", {"avoidEscape": true, "allowTemplateLiterals": false}],
+        "eqeqeq": ["error", "smart"],
+        "no-multi-spaces": "error",
+        "no-useless-return": "error",
+        "no-var": "error",
+        "indent": "error",
+        "no-multiple-empty-lines": ["error", {"max": 2, "maxEOF": 1, "maxBOF": 0}],
+        "no-trailing-spaces": "error",
+        "prefer-const": "error"
+    }
 }

@@ -1,11 +1,11 @@
 <h1 align="center">usefulTags</h1>
-<p align="center">A tiny JavaScript library incorporating some useful template tag functions.</p>
+<p align="center">A tiny JavaScript library providing some useful template tag functions.</p>
 
 ---
 ![code size: < 10kb](https://img.shields.io/github/languages/code-size/thethunderguys/usefulTags) ![license: MIT](https://img.shields.io/github/license/thethunderguys/usefulTags?color=orange) ![release: 1.x.x](https://img.shields.io/github/v/release/thethunderguys/usefulTags?sort=semver&color=brightgreen) [![codefactor: A+](https://img.shields.io/codefactor/grade/github/thethunderguys/usefulTags/trunk?label=codefactor&logo=codefactor)](https://www.codefactor.io/repository/github/thethunderguys/usefultags) [![code style: prettier](https://img.shields.io/badge/code%20style-prettier-ff69b4?logo=prettier&logoColor=informational)](https://github.com/prettier/prettier)
 
-usefulTags is a compact JavaScript library that adds a handful of commonly used and helpful template tags.
-It aims to be small, simple and practical by adding nothing but 4 template tags.
+usefulTags is a compact JavaScript library that adds a handful of commonly used template tags.
+It aims to be small and simple by adding what I see to be the 4 most helpful.
 
 By default, template strings preserve all newlines and indents, which can be irritating and make source code look awful.
 usefulTags' primary purpose is to resolve this issue in the vast majority of use cases, with 4 tags for managing newlines and indents.
@@ -24,10 +24,8 @@ Hello,
 ```
 
 ## Table of Contents
-- [Installation](#installation)
-    - [Requirements](#requirements)
-    - [Directions](#directions)
 - [Usage](#usage)
+    - [Requirements](#requirements)
     - [Importing](#importing)
         - [Node](#node)
         - [Browsers](#browsers)
@@ -41,7 +39,15 @@ Hello,
     - [TypeScript Usage](#typescript-usage)
 - [License](#license)
 
-## Installation
+## Usage
+The examples demonstrate this much better. Simply use the funtion as a template tag.
+
+When used as a regular function, any type is accepted (has no effect on non-string and non-array inputs).
+
+A string is always returned no matter what.
+
+See [available tags](#available-tags) for usage examples.
+
 ### Requirements
 - Any version of Node.js / iojs
 - Any version of Deno
@@ -50,27 +56,16 @@ Hello,
 usefulTags supports the vast majority of module loaders (CommonJS, ESModules, RequireJS, Script Tags, etc.) thanks to [UMD](https://github.com/umdjs/umd).
 
 usefulTags works with transpilers like TypeScript and Babel, so you can write template literals in modern ES2015 syntax and transform it to ES5.
-### Directions
-Install with NPM:
-```
-npm i usefultags
-```
-For URL based loaders and browsers, see [importing](#importing) instead.
-
----
-## Usage
-The syntax is straightforward. All of the functions are used as template tags which automatically take the string as an argument. No more arguments get parsed.
-
-When used as a regular function, either a string or array of any value is accepted.
-
-A string is returned on success, and a `TypeError` is retruned when the provided arguments are an invalid type.
-
-See [available tags](#available-tags) for usage examples.
 ### Importing
 See importable functions at [available tags](#available-tags).
 
 The default suggested namespace is `usefulTags` if you choose not to pollute the global namespace.
 #### Node
+Install with NPM (or whatever other package manager you use):
+```
+npm i usefultags
+```
+
 ```js
 //CommonJS loader:
 const {stripIndent} = require("usefultags");
@@ -117,8 +112,10 @@ const {stripIndent} = usefulTags as typeof _usefulTags;
 ### Available Tags:
 These are all of the tags exposed by usefulTags.
 #### `stripIndent`
-Remove initial indentation from each line in a multi-line string, but keep intentionally larger indents
-(useful deep in callbacks/conditionals to keep indented source looking tidy and operational)
+Remove initial indentation from each line in a multi-line string, but keep intentionally larger indents.
+Useful in deep nesting to keep multi-line strings looking clean and operational.
+
+Note that if you mix tabs and spaces, there will be horrible results using this.
 ```js
 const line = stripIndent`
         This
@@ -146,8 +143,8 @@ Random number: 0.xxxxxxxxxxxxxxxx.
 ```
 
 #### `stripAllIndents`
-Remove *all* indentation from each line in a multi-line string
-(useful deep in callbacks/conditionals where additional indents can be a mistake)
+Remove *all* indentation from each line in a multi-line string.
+Useful in deep nesting to keep multi-line strings looking clean and operational.
 ```js
 const line = stripAllIndents`This
     is
@@ -173,8 +170,8 @@ Random number: 0.xxxxxxxxxxxxxxxx.
 */
 ```
 #### `oneLine`
-Merge a multi-line string onto one line
-(useful for keeping long lines under 80 characters)
+Merge a multi-line string onto one line.
+Useful for keeping long lines looking nice in source code.
 ```js
 const line = oneLine`
         This
@@ -194,8 +191,8 @@ This is a multi-line newline indented  / string. Random number: 0.xxxxxxxxxxxxxx
 ```
 
 #### `oneLineConcatenate`
-Merge a multi-line string onto one line, without spaces
-(useful for URLs constructed using template literals)
+Merge a multi-line string onto one line, without spaces.
+Useful for URLs constructed using template literals.
 ```js
 const line = oneLineConcatenate`
         This
