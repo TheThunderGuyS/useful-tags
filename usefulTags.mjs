@@ -48,14 +48,11 @@ export function oneLine(templateLiteral, ...expressions) {
 
     return string
         .replace(/^\s+/gm, " ") // Trim all excess whitespace, replacing them with one space
-        .replace(/^\s/, "") // Trim the extra beginning space
-        .replace(/\n/g, ""); // Trim all newlines
+        .replace(/\n|^\s/g, ""); // Trim the extra space and all newlines
 }
 
 export function oneLineConcatenate(templateLiteral, ...expressions) {
     const string = manageTypes(templateLiteral, ...expressions);
 
-    return string
-        .replace(/^\s+/gm, "") // Trim all excess whitespace
-        .replace(/\n/g, ""); // Trim all newlines
+    return string.replace(/^\s+|\n\s+|\n/g, ""); // Trim all newlines and whitespace
 }
