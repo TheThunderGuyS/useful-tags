@@ -8,19 +8,16 @@
         "es6": true
     },
     "parserOptions": {
-        "ecmaVersion": 2015
+        "ecmaVersion": 6
     },
     "rules": {
         "semi": ["error", "always"],
         "curly": ["error", "multi-line"],
         "quotes": ["error", "double", {"avoidEscape": true, "allowTemplateLiterals": false}],
-        "eqeqeq": ["error", "smart"],
         "no-multi-spaces": "error",
         "no-useless-return": "error",
-        "no-var": "error",
         "indent": "error",
         "no-multiple-empty-lines": ["error", {"max": 2, "maxEOF": 1, "maxBOF": 0}],
-        "no-trailing-spaces": "error",
-        "prefer-const": "error"
+        "no-trailing-spaces": "error"
     }
 }

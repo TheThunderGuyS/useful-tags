@@ -1,18 +1,17 @@
 {
   "name": "usefultags",
   "version": "1.2.0",
-  "description": "A tiny JavaScript library providing some useful template tag functions.",
+  "description": "A tiny JavaScript library providing some useful template literal tags.",
   "main": "dist/usefulTags.js",
   "browser": "dist/usefulTags.js",
-  "unpkg": "dist/usefulTags.js",
   "module": "dist/usefulTags.mjs",
   "files": [
-    "dist/*"
+    "dist/"
   ],
   "types": "dist/usefulTags.d.ts",
   "scripts": {
-    "test": "node ./test.js && node ./test.mjs",
-    "build": "npx babel ./usefulTags.mjs --out-file ./dist/usefulTags.js && npx minify ./usefulTags.mjs --sourceType module --out-file ./dist/usefulTags.mjs && npx ncp ./usefulTags.d.ts ./dist/usefulTags.d.ts"
+    "test": "node test.js && node test.mjs",
+    "build": "npx babel usefulTags.mjs -o ./dist/usefulTags.js && npx minify usefulTags.mjs --sourceType module -o ./dist/usefulTags.mjs && npx ncp usefulTags.d.ts ./dist/usefulTags.d.ts"
   },
   "engines": {
     "node": ">=0.2",
@@ -21,7 +20,7 @@
   },
   "browserslist": [
     "firefox 4",
-    "chrome 19",
+    "chrome 5",
     "ie 9",
     "node 0.2"
   ],
@@ -34,6 +33,7 @@
     "es2015",
     "tagged-template-literals",
     "template-literals",
+    "template-literal",
     "template-string",
     "template-strings",
     "indentation"

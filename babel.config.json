@@ -1,17 +1,10 @@
 {
     "comments": false,
     "presets": [
-        [
-            "@babel/env",
-            {
-                "modules": "umd",
-                "spec": true,
-                "bugfixes": true
-            }
-        ],
-        [
-            "minify",
-            {}
-        ]
+        ["@babel/env", {
+            "modules": "umd",
+            "spec": true
+        }],
+        ["minify", {}]
     ]
 }
